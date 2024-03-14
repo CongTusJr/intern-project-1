@@ -7,7 +7,7 @@ module.exports = {
     extend: {},
     colors: {
       // Configure your color palette here
-      goldlg: "#c69960",
+      goldlg: "#f2c17e",
       white: "#fff",
       black: "#000",
       background: "#f4f4f4",
