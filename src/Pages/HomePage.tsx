@@ -140,8 +140,8 @@ const navigate=useNavigate()
                 </div>
             </div>
         </div>
-        <div className='px-48'>
-            <div className='bg-white mt-7 pt-3'>
+        <div className='px-48 bg-white'>
+            <div className=' mt-7 pt-3'>
                 <div className='  px-3 pb-5 '>
                     <div className='text-center'>
                         <h2 className='mx-4 font-bold text-2xl'>GREAT VALUE IN AN IDEAL LOCATION</h2>
@@ -152,20 +152,21 @@ const navigate=useNavigate()
                         src="https://moscowballetlc.com/wp-content/uploads/2017/11/razdelitel1.png" alt="" />
                     </div>
                 </div>
-                <div className='flex grid-cols-3 gap-5 '>
-                    <div className='col-span-2'>
-                    Khách sạn Reyna Luxury là thành viên tiếp theo của hệ thống khách sạn Reyna, được quản lý bởi tập đoàn 22 Land.<br/>
-                    Khách sạn tọa lạc tại vị trí 34 Phố Miếu Đầm, phường Mễ Trì, Nam Từ Liêm, Hà Nội - Nơi trung tâm hành chính quan trọng của quốc gia. 
-                    Tiếp giáp với nhiều vị trí quan trọng: cách sân bay Nội Bài 25km, cách Trung tâm hội nghị quốc gia 3 phút đi bộ, gần sân vận động Quốc gia 
-                    Mỹ Đình chỉ vài phút lái xe, đối diện với khách sạn JW Marriott, quý khách có thể dễ dàng di chuyển đến các tòa nhà văn phòng cũng như các 
-                    khu công nghiệp lớn ở Hà Nội. Với vị trí thuận tiện di chuyển đến các Khu công nghiệp lân cận, gần các tòa nhà văn phòng và trung tâm thương mại, 
-                    khách sạn Reyna Luxury hứa hẹn sẽ trở thành điểm dừng chân, nghỉ ngơi lý tưởng cho những chuyến đi công tác hay du lịch của khách hàng trong nước 
-                    và quốc tế.
+                <div className='grid grid-cols-3 gap-5'>
+                    <div className='col-span-2 text-base leading-relaxed text-gray-700'>
+                        <strong>Khách sạn Reyna Luxury</strong>&nbsp;là thành viên tiếp theo của hệ thống khách sạn Reyna, được quản lý bởi tập đoàn 22 Land.<br/>
+                        Khách sạn tọa lạc tại vị trí 34 Phố Miếu Đầm, phường Mễ Trì, Nam Từ Liêm, Hà Nội - Nơi trung tâm hành chính quan trọng của quốc gia. 
+                        Tiếp giáp với nhiều vị trí quan trọng: cách sân bay Nội Bài 25km, cách Trung tâm hội nghị quốc gia 3 phút đi bộ, gần sân vận động Quốc gia 
+                        Mỹ Đình chỉ vài phút lái xe, đối diện với khách sạn JW Marriott, quý khách có thể dễ dàng di chuyển đến các tòa nhà văn phòng cũng như các 
+                        khu công nghiệp lớn ở Hà Nội. Với vị trí thuận tiện di chuyển đến các Khu công nghiệp lân cận, gần các tòa nhà văn phòng và trung tâm thương mại, 
+                        khách sạn Reyna Luxury hứa hẹn sẽ trở thành điểm dừng chân, nghỉ ngơi lý tưởng cho những chuyến đi công tác hay du lịch của khách hàng trong nước 
+                        và quốc tế.
                     </div>
-                    <div className='col-span-2'>
-                        <img src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'/>
+                    <div className='col-span-1 ml-4'>
+                        <img className='w-96 ' src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'/>
                     </div>
-                </div>   
+</div>
+  
             </div>
         </div>
     </div>
