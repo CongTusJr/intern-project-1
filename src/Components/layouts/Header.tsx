@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { CaretDownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Dropdown, Space } from 'antd';
+import { Dropdown } from 'antd';
 import { CloseOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -35,6 +35,55 @@ const items: MenuProps['items'] = [
   ];
 
 const Header:React.FC = () => {
+  const menus = [
+    {
+      key: 'trangchu',
+      label: 'TRANG CHỦ',
+      url: '/',
+    },
+    {
+      key: 'gioithieu',
+      label: 'GIỚI THIỆU',
+      url: '/about-us',
+    },
+    {
+      key: 'phong',
+      label: 'PHÒNG',
+      url: '/room',
+    },
+    {
+      key: 'dichvu',
+      label: 'DỊCH VỤ',
+      child: items
+    },
+    {
+      key: 'hinhanh',
+      label: 'HÌNH ẢNH',
+      url: '/room',
+    },
+    {
+      key: 'tours',
+      label: 'TOURS',
+      url: '/room',
+    },
+    {
+      key: 'lienhe',
+      label: 'LIÊN HỆ',
+      url: '',
+    },
+  ];
+  const images=[
+    {
+      key:1,
+      url:'https://reynaluxuryhotel.com/files/images/comment/English.png',
+      name:'English'
+    },
+    {
+      key:2,
+      url:'https://reynaluxuryhotel.com/files/images/comment/vietnamese.png',
+      name:'VietNam'
+    },
+  ]
 const navigate=useNavigate()
 const handlenavigateHome=()=>{
     navigate('/')
@@ -51,44 +100,27 @@ const [isOpen, setIsOpen]=useState<boolean>(false)
                     isOpen?<CloseOutlined/>:<UnorderedListOutlined/>
                 }
             </div>
-            {/* <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#000] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${isOpen ? 'top-[128   ]' : 'top-[-490px]'}`}> */}
             <div className='h-20 w-[840px] flex pl-[45px]'>
-                    {/* <li className='font-bold  my-7 md:pl-0 md:ml-8'> */}
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
-                        <Link to='/' className='text-goldlg hover:text-[#8d663A] text-[14px]'>TRANG CHỦ</Link>
+                {menus.map((menu) => (
+                    <span key={menu.key} className='font-bold px-[10px] pt-[45px] pb-[15px]'>
+                        {menu.child ? (
+                            <Dropdown menu={{ items }}>
+                                <span onClick={(e) => e.preventDefault()} className='text-goldlg hover:text-[#8D663A] text-[14px] cursor-pointer'>
+                                    {menu.label} <CaretDownOutlined />
+                                </span>
+                            </Dropdown>
+                        ) : (
+                            <Link to={menu.url} className='text-goldlg hover:text-[#8D663A] text-[14px]'>{menu.label}</Link>
+                        )}
                     </span>
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
-                        <Link to='/about-us' className='text-goldlg hover:text-[#8D663A] text-[14px]'>GIỚI THIỆU</Link>
-                    </span>
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
-                        <Link to='/room' className='text-goldlg hover:text-[#8D663A] text-[14px]'>PHÒNG</Link>
-                    </span>
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px] cursor-pointer'>
-                        {/* <Link to='/room' className='text-goldlg hover:text-[#8D663A] text-[14px]'>DỊCH VỤ</Link> */}
-                        <Dropdown menu={{ items }}>
-                            <span onClick={(e) => e.preventDefault()}>
-                            <Space className='text-goldlg hover:text-[#8D663A] text-[14px]'>
-                                DỊCH VỤ
-                                <CaretDownOutlined />
-                            </Space>
-                            </span>
-                        </Dropdown>
-                    </span>
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
-                        <Link to='/room' className='text-goldlg hover:text-[#8D663A] text-[14px]'>HÌNH ẢNH</Link>
-                    </span>
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
-                        <Link to='/room' className='text-goldlg hover:text-[#8D663A] text-[14px]'>TOURS</Link>
-                    </span>
-                    <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
-                        <Link to='/room' className='text-goldlg hover:text-[#8D663A] text-[14px]'>LIÊN HỆ</Link>
-                    </span>
+                ))}
             </div>
             
             <div >
                 <div className='flex justify-end gap-3 pr-[15px] pt-4 mt-[30px]'>
-                    <img src="https://reynaluxuryhotel.com/files/images/comment/English.png" alt="" />
-                    <img src="https://reynaluxuryhotel.com/files/images/comment/vietnamese.png" alt="" />
+                  {images.map((image)=>(
+                    <img src={image.url} alt={image.name} key={image.key} />
+                  ))}
                 </div>
             </div>
             

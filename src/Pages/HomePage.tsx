@@ -163,7 +163,7 @@ const navigate=useNavigate()
                         và quốc tế.
                     </div>
                     <div className='col-span-1 ml-4'>
-                        <img className='w-96 ' src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'/>
+                        <img className='w-96 ' src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' alt=''/>
                     </div>
 </div>
   
