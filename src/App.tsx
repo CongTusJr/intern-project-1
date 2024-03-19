@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Outlet, RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import MainLayout from './Components/layouts/MainLayout';

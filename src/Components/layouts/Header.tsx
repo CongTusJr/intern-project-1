@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { CaretDownOutlined, PhoneFilled } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
 import { CloseOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { BsTelephoneFill } from "react-icons/bs";
 
 const items: MenuProps['items'] = [
     {
@@ -41,7 +42,7 @@ const handlenavigateHome=()=>{
 const [isOpen, setIsOpen]=useState<boolean>(false)
   return ( 
     <div className='shadow-md w-full bg-[#000] h-[100px]'>
-        <div className='flex justify-between px-[173px] ' >
+        <div className='flex justify-between px-[173px]' >
             <div className='font-bold  cursor-pointer flex items-center gap-1 px-[15px] w-48'>
                 <img onClick={handlenavigateHome} src="https://reynaluxuryhotel.com/files/files/logo-reyna.png" alt="logo-reynal" className='w-[132px] h-[99px] md:w-18'/>
             </div>
@@ -51,7 +52,7 @@ const [isOpen, setIsOpen]=useState<boolean>(false)
                 }
             </div>
             {/* <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#000] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${isOpen ? 'top-[128   ]' : 'top-[-490px]'}`}> */}
-            <div className='h-20 w-[840px] flex px-[45px]'>
+            <div className='h-20 w-[840px] flex pl-[45px]'>
                     {/* <li className='font-bold  my-7 md:pl-0 md:ml-8'> */}
                     <span className='font-bold  px-[10px] pt-[45px] pb-[15px]'>
                         <Link to='/' className='text-goldlg hover:text-[#8d663A] text-[14px]'>TRANG CHỦ</Link>
@@ -84,14 +85,16 @@ const [isOpen, setIsOpen]=useState<boolean>(false)
                     </span>
             </div>
             
-            <div className='text-white text-[14px] w-52 mt-1 pr-[15px]'>
-                <span> <PhoneFilled /> +84 976 328066 (call/zalo)</span>
-                <div className='flex justify-end gap-3 pt-4'>
+            <div >
+                <div className='flex justify-end gap-3 pr-[15px] pt-4 mt-[30px]'>
                     <img src="https://reynaluxuryhotel.com/files/images/comment/English.png" alt="" />
                     <img src="https://reynaluxuryhotel.com/files/images/comment/vietnamese.png" alt="" />
                 </div>
-            </div>     
+            </div>
             
+        </div>
+        <div className='text-white text-[14px] mt-1 top-0 justify-end z-10 absolute right-0 pr-[15px] xl:mr-[173px] lg:mr-[48px]'>
+          <span className='flex'> <BsTelephoneFill className='mt-1 w-3'/>&nbsp;+84 976 328066 (call/zalo)</span>
         </div>
     </div>
   )
