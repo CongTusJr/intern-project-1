@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import Slider from 'react-slick';
-import { SliderItem } from '../Interface/interface';
+import { SliderItem } from '../../../interface';
 
 const CustomPrevArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
     <div className="flex absolute left-5 top-1/2 transform -translate-y-1/2 w-[54px] h-[54px] bg-white opacity-50 z-10 cursor-pointer p-3 rounded-full items-center justify-center transition-colors duration-300 hover:opacity-100" onClick={onClick}>
