@@ -1,46 +1,54 @@
-import React from 'react';
-import { Outlet, RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import MainLayout from './Components/layouts/MainLayout';
-import LoginPage from './Pages/LoginPage';
-import ABoutPage from './Pages/ABoutPage';
-import RoomPage from './Pages/RoomPage';
+import React from "react";
+import {
+  Outlet,
+  RouteObject,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import MainLayout from "./Components/layouts/MainLayout";
+import LoginPage from "./Pages/LoginPage";
+import ABoutPage from "./Pages/ABoutPage";
+import RoomPage from "./Pages/RoomPage";
+import DetailRoom from "./Pages/DetailRoom";
 
-const appRoutes:RouteObject[]=[
+const appRoutes: RouteObject[] = [
   {
-    path:'/',
-    element: <MainLayout/>,
-    children:[
+    path: "/",
+    element: <MainLayout />,
+    children: [
       {
         index: true,
-        element:<HomePage/>
+        element: <HomePage />,
       },
       {
-        path:'/login',
-        element:<LoginPage/>
+        path: "/login",
+        element: <LoginPage />,
       },
       {
-        path:'/about-us',
-        element:<ABoutPage/>
+        path: "/about-us",
+        element: <ABoutPage />,
       },
       {
-        path:'/room',
-        element:<RoomPage/>
-      }
-    ]
-  }
-]
-const router=createBrowserRouter([
+        path: "/room",
+        element: <RoomPage />,
+      },
+      {
+        path: "/room/details",
+        element: <DetailRoom />,
+      },
+    ],
+  },
+];
+const router = createBrowserRouter([
   {
-    element:(
-      <Outlet/>
-    ),
-      children:appRoutes
-  }
-])
+    element: <Outlet />,
+    children: appRoutes,
+  },
+]);
 
-const App:React.FC=()=> {
-  return <RouterProvider router={router}/>
-}
+const App: React.FC = () => {
+  return <RouterProvider router={router} />;
+};
 
 export default App;

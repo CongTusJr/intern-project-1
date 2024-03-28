@@ -39,11 +39,17 @@ const RoomSwipers: React.FC<{ arrRooms: RoomDetails[] }> = ({ arrRooms }) => {
           >
             {arrRooms.map((arrRoom) => (
               <SwiperSlide key={arrRoom.key} className="mr-[10px]">
-                <img src={arrRoom.url} alt={arrRoom.name} className="w-[93%]" />
+                <img
+                  src={arrRoom.image}
+                  alt={arrRoom.name}
+                  className="w-[93%]"
+                />
                 <div className="p-5 bg-background w-[93%]">
-                  <h4 className="text-center mt-[5px] mb-[10px] hover:text-[#C52D2F] text-textA pl-[5px] text-lg font-bold">
-                    {arrRoom.name}
-                  </h4>
+                  <a href={arrRoom.url}>
+                    <h4 className="text-center mt-[5px] mb-[10px] hover:text-[#C52D2F] text-textA pl-[5px] text-lg font-bold">
+                      {arrRoom.name}
+                    </h4>
+                  </a>
                   <div className="text-justify">{arrRoom.bio}</div>
                 </div>
               </SwiperSlide>

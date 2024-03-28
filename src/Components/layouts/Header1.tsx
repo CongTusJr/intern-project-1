@@ -95,17 +95,14 @@ const Header1: React.FC = () => {
     <div className="shadow-md w-full fixed top-0 left-0 z-30 bg-black ">
       <div className="md:flex items-center   text-goldlg  sm:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
         {/* logo section */}
-        <div className="md:w-1/6 sm:w-1/3 cursor-pointer flex items-center gap-1">
+        <div className="md:w-1/6 w-1/3 cursor-pointer flex items-center ">
           <img
             onClick={handlenavigateHome}
             src="https://reynaluxuryhotel.com/files/files/logo-reyna.png"
             alt="logo-reynal"
-            className="w-[132px] h-[99px] md:w-18"
+            className="xl:w-[132px] h-[99px] w-full md:w-72px]"
           />
         </div>
-        {/* Menu icon */}
-
-        {/* linke items */}
         <div className="flex xl:w-5/6 lg:w-4/6">
           <ul
             className={`md:flex  md:items-center md:pb-0 pb-12 absolute md:static bg-black md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${

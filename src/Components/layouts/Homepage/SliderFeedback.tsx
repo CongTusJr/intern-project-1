@@ -16,7 +16,7 @@ const SliderFeedback: React.FC<{ arrFeedback: Feedback[] }> = ({
     nextArrow: <></>,
   };
   return (
-    <div className="bg-black flex">
+    <div className="bg-black sm:flex">
       <div className="bg-black sm:flex sm:w-[750px] lg:w-[970px] xl:[1170px] mx-auto">
         <div className="bg-black sm:w-[50%] ">
           <div className="py-[30px] px-[47px] max-w-[600px] sm:pt-5 sm:pb-[30px] sm:pl-[15px] sm:pr-20 ">

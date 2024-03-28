@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Bannerdetail from "../Components/layouts/Details/Bannerdetail";
+import Container from "../Components/layouts/Details/Container";
 
-const DetailRoom:React.FC   = () => {
+const DetailRoom: React.FC = () => {
   return (
-    <div>DetailRoom </div>
-  )
-}
+    <div className="relative">
+      <Bannerdetail />
+      <Container />
+    </div>
+  );
+};
 
-export default DetailRoom 
+export default DetailRoom;

@@ -47,6 +47,7 @@ module.exports = {
       background: "#f4f4f4",
       textCl: "#333d21",
       textA: "#AE8545",
+      red: "#ff0000",
     },
   },
   plugins: [require("@tailwindcss/typography")],

@@ -49,15 +49,15 @@ const Footer: React.FC = () => {
 
   return (
     <div className=" text-[#cacdd1] bg-[#000] font-myriad">
-      <div className="sm:flex ">
+      <div className="md:flex ">
         <div className="pb-[10px] mt-[30px] px-[15px] justify-center mx-auto sm:w-[750px] lg:w-[970px] xl:[1170px]">
-          <Row className="gap-5 leading-[25px]">
+          <Row className="block sm:flex gap-5 leading-[25px]">
             <Col span={8}>
-              <div className="w-[380px] px-[15px] font-myriad">
-                <h1 className=" text-h1 mb-[10px] font-medium">
+              <div className="max-w-[380px] w-full px-[15px] font-myriad">
+                <h1 className=" text-h1 mb-[10px] font-medium ">
                   Reyna Luxury Hotel
                 </h1>
-                <p className="mb-[10px] w-[350px] ">
+                <p className="mb-[10px] w-full max-w-[350px] ">
                   Địa chỉ: Số 34 Miếu Đầm, P. Mễ Trì, Q. Nam Từ Liêm, Hà Nội
                 </p>
                 <p className="mb-[10px] flex items-center">
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
                   </i>{" "}
                   Email: info@reynaluxuryhotel.com
                 </p>
-                <div className="text-[34px] h-[56px] flex py-[14px] ml-[-12px]">
+                <div className="text-[34px] h-[56px] sm:flex py-[14px] ml-[-12px]">
                   {ListIcons.map((icons) => (
                     <a
                       key={icons.key}
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
             <Col span={1}></Col>
             <Col
               span={6}
-              className="inline-block left-[100px] sm:left-[90px] md:left-[60px] lg:left-0 font-myriad text-white"
+              className="inline-block left-4 sm:left-[90px] md:left-[60px] lg:left-0 font-myriad text-white mt-20 sm:mt-0"
             >
               <p className="text-[20px] text-[#cacdd1] my-[10px]">
                 VỀ CHÚNG TÔI

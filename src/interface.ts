@@ -1,4 +1,4 @@
-import { Dayjs } from 'dayjs';
+
 export interface SliderItem {
     key: number;
     url: string;
@@ -11,9 +11,10 @@ export interface Feedback{
 }
 export interface RoomDetails {
     key: string;
-    url: string;
+    image: string;
     name: string;
     bio: string;
+    url:string
 }
 export interface outServices {
     key: string;
@@ -21,7 +22,3 @@ export interface outServices {
     url: string;
     bio: string | JSX.Element;
 } 
-export interface CalendarProps {
-    onSelect: (date: Dayjs) => void;
-    disabledDate?: (current: Dayjs) => boolean; // Optional disabledDate prop
-  }

@@ -96,27 +96,31 @@ const HomePage: React.FC = () => {
   const arrRooms: RoomDetails[] = [
     {
       key: "SUPERIOR",
-      url: "https://reynaluxuryhotel.com/files/images/DSC_0272-min.jpg",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0272-min.jpg",
       name: "PHÒNG SUPERIOR",
       bio: "Phòng Superior có diện tích 28m2 được thiết kế hài hòa với nội thất sang trọng và đầy đủ tiện nghi hiện đại mang đến sự thoải mái, tiện lợi nhất cho quý khách.",
+      url: "/room/details",
     },
     {
       key: "DELUXE",
-      url: "https://reynaluxuryhotel.com/files/images/DSC_0249-min.jpg",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0249-min.jpg",
       name: "PHÒNG DELUXE",
       bio: "Phòng Deluxe với thiết kế hài hòa, nội thất sang trọng với đầy đủ tiện nghi hiện đại. Diện tích khoảng 26 - 28m2 với hướng nhìn ra phía thành phố giúp quý khách có thể ngắm nhìn khung cảnh xung quanh.",
+      url: "",
     },
     {
       key: "EXECUTIVE",
-      url: "https://reynaluxuryhotel.com/files/images/DSC_0258-min.jpg",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0258-min.jpg",
       name: "PHÒNG EXECUTIVE",
       bio: "Phòng Executive có tầm nhìn bao quát, có diện tích khoảng 32m2 được trang bị giường ngủ king size đem lại sự thoải mái và thư giãn nhất cho quý khách, với lối kiến trúc độc đáo và nội thất sang trọng sẽ mang đến cho bạn cảm giác thoải mái, như lạc vào không gian sang trọng, đẳng cấp.",
+      url: "",
     },
     {
       key: "JUNIORSUITE",
-      url: "https://reynaluxuryhotel.com/files/images/DSC_0303-min.jpg",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0303-min.jpg",
       name: "PHÒNG JUNIOR SUITE",
       bio: "Phòng Junior suite có tầm nhìn bao quát, có diện tích khoảng 40m2 được trang bị giường ngủ king size và ghế sofa đem lại sự thoải mái và thư giãn nhất cho quý khách, với lối kiến trúc độc đáo và nội thất sang trọng và tầm nhìn trên cao sẽ mang đến cho bạn cảm giác thoải mái, lạc vào 1 không gian sang trọng, đẳng cấp",
+      url: "",
     },
   ];
   const outServices: outServices[] = [
@@ -146,19 +150,19 @@ const HomePage: React.FC = () => {
     },
   ];
   return (
-    <div className="relative">
+    <div className="relative mt-[99px]">
       {/* slider */}
       <SliderComponent arrImages={sliders} />
 
       {/* Book Now  */}
       <BookNow />
-      <div className=" sm:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
+      <div className="md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
         {/* About us */}
         <AboutComponent />
       </div>
       {/* Room */}
       <RoomSwipers arrRooms={arrRooms} />
-      <div className=" sm:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
+      <div className="md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
         {/* service  */}
         <Service arrServices={outServices} />
       </div>
