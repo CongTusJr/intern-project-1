@@ -2,14 +2,14 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-datepicker/dist/react-datepicker.css";
-import SliderComponent from "../Components/layouts/Homepage/SliderComponent";
+import SliderComponent from "../Components/Homepage/SliderComponent";
 import { Feedback, RoomDetails, SliderItem, outServices } from "../interface";
-import SliderImages from "../Components/layouts/Homepage/SliderImages";
-import BookNow from "../Components/layouts/Homepage/BookNow";
-import Service from "../Components/layouts/Homepage/Service";
-import SliderFeedback from "../Components/layouts/Homepage/SliderFeedback";
-import AboutComponent from "../Components/layouts/Homepage/AboutComponent";
-import RoomSwipers from "../Components/layouts/Homepage/RoomSwiper";
+import SliderImages from "../Components/Homepage/SliderImages";
+import BookNow from "../Components/Homepage/BookNow";
+import Service from "../Components/Homepage/Service";
+import SliderFeedback from "../Components/Homepage/SliderFeedback";
+import AboutComponent from "../Components/Homepage/AboutComponent";
+import RoomSwipers from "../Components/Homepage/RoomSwiper";
 
 const HomePage: React.FC = () => {
   const sliders: SliderItem[] = [

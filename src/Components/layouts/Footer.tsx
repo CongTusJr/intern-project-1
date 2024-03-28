@@ -52,12 +52,12 @@ const Footer: React.FC = () => {
       <div className="md:flex ">
         <div className="pb-[10px] mt-[30px] px-[15px] justify-center mx-auto sm:w-[750px] lg:w-[970px] xl:[1170px]">
           <Row className="block sm:flex gap-5 leading-[25px]">
-            <Col span={8}>
+            <Col md={8}>
               <div className="max-w-[380px] w-full px-[15px] font-myriad">
                 <h1 className=" text-h1 mb-[10px] font-medium ">
                   Reyna Luxury Hotel
                 </h1>
-                <p className="mb-[10px] w-full max-w-[350px] ">
+                <p className="mb-[10px] w-full max-w-[350px] text-justify">
                   Địa chỉ: Số 34 Miếu Đầm, P. Mễ Trì, Q. Nam Từ Liêm, Hà Nội
                 </p>
                 <p className="mb-[10px] flex items-center">
@@ -87,10 +87,10 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </Col>
-            <Col span={1}></Col>
+            <Col md={1}></Col>
             <Col
-              span={6}
-              className="inline-block left-4 sm:left-[90px] md:left-[60px] lg:left-0 font-myriad text-white mt-20 sm:mt-0"
+              md={6}
+              className="inline-block left-4 sm:left-[60px] md:left-[60px] lg:left-0 font-myriad text-white mt-20 sm:mt-0"
             >
               <p className="text-[20px] text-[#cacdd1] my-[10px]">
                 VỀ CHÚNG TÔI
@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
                 </p>
               ))}
             </Col>
-            <Col span={7} className="hidden md:block">
+            <Col md={7} className="hidden md:block">
               <p className="text-[20px] text-[#cacdd1] my-[10px] font-myriad">
                 BÀI VIẾT
               </p>

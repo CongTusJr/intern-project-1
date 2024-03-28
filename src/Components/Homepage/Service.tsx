@@ -1,5 +1,5 @@
 import React from "react";
-import { outServices } from "../../../interface";
+import { outServices } from "../../interface";
 
 const Service: React.FC<{ arrServices: outServices[] }> = ({ arrServices }) => {
   return (

@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { RoomDetails } from "../../../interface";
+import { RoomDetails } from "../../interface";
 
 const RoomSwipers: React.FC<{ arrRooms: RoomDetails[] }> = ({ arrRooms }) => {
   return (

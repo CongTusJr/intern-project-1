@@ -1,7 +1,7 @@
 import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import Slider from "react-slick";
-import { SliderItem } from "../../../interface";
+import { SliderItem } from "../../interface";
 
 const CustomPrevArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
   <div

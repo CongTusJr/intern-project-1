@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import { SliderItem } from "../../../interface";
+import { SliderItem } from "../../interface";
 import { FaPlus } from "react-icons/fa";
 
 const SliderImages: React.FC<{ arrImages: SliderItem[] }> = ({ arrImages }) => {

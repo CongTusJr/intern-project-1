@@ -1,6 +1,6 @@
 import React from "react";
-import Bannerdetail from "../Components/layouts/Details/Bannerdetail";
-import Container from "../Components/layouts/Details/Container";
+import Bannerdetail from "../Components/Details/Bannerdetail";
+import Container from "../Components/Details/Container";
 
 const DetailRoom: React.FC = () => {
   return (

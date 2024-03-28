@@ -1,5 +1,5 @@
 import React from "react";
-import { Feedback } from "../../../interface";
+import { Feedback } from "../../interface";
 import Slider from "react-slick";
 
 const SliderFeedback: React.FC<{ arrFeedback: Feedback[] }> = ({
