@@ -149,7 +149,7 @@ const Header1: React.FC = () => {
           </span>
           <div
             onClick={() => setOpen(!open)}
-            className="absolute right-8 top-6 z-10 cursor-pointer md:hidden w-7 h-7"
+            className="absolute right-8 top-6 z-10 cursor-pointer md:hidden text-goldlg hover:text-textA text-[30px]"
           >
             {/* {open ? <XMarkIcon /> : <Bars3BottomRightIcon />} */}
             {open ? <FaRegWindowClose /> : <LuMenuSquare />}
