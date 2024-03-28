@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
   return (
     <div className=" text-[#cacdd1] bg-[#000] font-myriad">
       <div className="md:flex ">
-        <div className="pb-[10px] mt-[30px] px-[15px] justify-center mx-auto sm:w-[750px] lg:w-[970px] xl:[1170px]">
+        <div className="pb-[10px] pt-[30px] px-[15px] justify-center mx-auto sm:w-[750px] lg:w-[970px] xl:[1170px]">
           <Row className="block sm:flex gap-5 leading-[25px]">
             <Col md={8}>
               <div className="max-w-[380px] w-full px-[15px] font-myriad">
@@ -72,12 +72,12 @@ const Footer: React.FC = () => {
                   </i>{" "}
                   Email: info@reynaluxuryhotel.com
                 </p>
-                <div className="text-[34px] h-[56px] sm:flex py-[14px] ml-[-12px]">
+                <div className="text-[34px] h-[56px] flex flex-wrap py-[14px] ml-[-12px]">
                   {ListIcons.map((icons) => (
                     <a
                       key={icons.key}
                       href={icons.url}
-                      className="flex border-[1px] border-white hover:border-goldlg h-[32px] w-[34px] justify-center mx-[15px] p-[5px] items-center"
+                      className="flex border-[1px] border-white hover:border-goldlg h-[32px] w-[34px] justify-center mx-[15px] p-[5px] items-center mb-[10px]"
                     >
                       <div className=" h-7 w-[22.9px] px-[3px] py-[5px] ">
                         <div className="hover:text-goldlg">{icons.icon}</div>
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
             <Col md={1}></Col>
             <Col
               md={6}
-              className="inline-block left-4 sm:left-[60px] md:left-[60px] lg:left-0 font-myriad text-white mt-20 sm:mt-0"
+              className="inline-block left-4 sm:left-[60px] md:left-[60px] lg:left-0 font-myriad text-white mt-5 sm:mt-0"
             >
               <p className="text-[20px] text-[#cacdd1] my-[10px]">
                 VỀ CHÚNG TÔI
