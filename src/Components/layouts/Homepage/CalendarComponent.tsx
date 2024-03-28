@@ -3,7 +3,11 @@
 import React from "react";
 import { Calendar, theme } from "antd";
 import { Dayjs } from "dayjs";
-import { CalendarProps } from "../../../interface";
+
+interface CalendarProps {
+  onSelect: (date: Dayjs) => void;
+  disabledDate?: (current: Dayjs) => boolean; // Optional disabledDate prop
+}
 
 const CalendarComponent: React.FC<CalendarProps> = ({
   onSelect,
