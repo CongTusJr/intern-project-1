@@ -8,9 +8,15 @@ export interface Feedback{
     name:string,
     cmt:string
 }
-export interface RoomDetail {
+export interface RoomDetails {
     key: string;
     url: string;
     name: string;
     bio: string;
 }
+export interface outServices {
+    key: string;
+    name: string;
+    url: string;
+    bio: string | JSX.Element;
+} 

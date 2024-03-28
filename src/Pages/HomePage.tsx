@@ -1,186 +1,172 @@
-import React from 'react';
-import "slick-carousel/slick/slick.css"; 
+import React from "react";
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'react-datepicker/dist/react-datepicker.css';
-import SliderComponent from '../Components/layouts/Homepage/SliderComponent';
-import { Feedback, SliderItem } from '../interface';
-import SliderImages from '../Components/layouts/Homepage/SliderImages';
-import BookNow from '../Components/layouts/Homepage/BookNow';
-import Service from '../Components/layouts/Homepage/Service';
-import SliderFeedback from '../Components/layouts/Homepage/SliderFeedback';
-import RoomSwiper from '../Components/layouts/Homepage/RoomSwiper';
+import "react-datepicker/dist/react-datepicker.css";
+import SliderComponent from "../Components/layouts/Homepage/SliderComponent";
+import { Feedback, RoomDetails, SliderItem, outServices } from "../interface";
+import SliderImages from "../Components/layouts/Homepage/SliderImages";
+import BookNow from "../Components/layouts/Homepage/BookNow";
+import Service from "../Components/layouts/Homepage/Service";
+import SliderFeedback from "../Components/layouts/Homepage/SliderFeedback";
+import AboutComponent from "../Components/layouts/Homepage/AboutComponent";
+import RoomSwipers from "../Components/layouts/Homepage/RoomSwiper";
 
-const HomePage: React.FC =()  => {
-    
-    const sliders:SliderItem[] = [
-        {
-            key: 1,
-            url: 'https://reynaluxuryhotel.com/files/images/banner/bn6.jpg',
-            name:'Skider1'
-        },
-        {
-            key: 2,
-            url: 'https://reynaluxuryhotel.com/files/images/banner/bn8.jpg',
-            name: 'Skider2'
-        },
-        {
-            key: 3,
-            url: 'https://reynaluxuryhotel.com/files/images/banner/bn2.jpg',
-            name: 'Skider3'
-        },
-        {
-            key: 4,
-            url: 'https://reynaluxuryhotel.com/files/images/banner/bn1.jpg',
-            name: 'Skider4'
-        },
-    ];
-
-    const Feedbacks:Feedback[]=[
-        {
-            key:1,
-            name:'Hoàng Anh',
-            cmt:'Dịch vụ rất tốt và chuyên nghiệp, rất cảm ơn các bạn và chúc các bạn thành công hơn nữa'
-        },
-        {
-            key:2,
-            name:'Minh Quốc',
-            cmt:'Rất ấn tượng với dịch vụ và nhân viên phục vụ ở đây, sẽ ghé thăm các bạn vào lần sau'
-        }
-    ]
-    const images:SliderItem[]=[
-        {
-            key:1,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:2,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:3,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:4,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:5,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:6,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:7,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:8,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-        {
-            key:9,
-            url:'https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg',
-            name:'image1'
-        },
-    ]
-
+const HomePage: React.FC = () => {
+  const sliders: SliderItem[] = [
+    {
+      key: 1,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn6.jpg",
+      name: "Skider1",
+    },
+    {
+      key: 2,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn8.jpg",
+      name: "Skider2",
+    },
+    {
+      key: 3,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn2.jpg",
+      name: "Skider3",
+    },
+    {
+      key: 4,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn1.jpg",
+      name: "Skider4",
+    },
+  ];
+  const Feedbacks: Feedback[] = [
+    {
+      key: 1,
+      name: "Hoàng Anh",
+      cmt: "Dịch vụ rất tốt và chuyên nghiệp, rất cảm ơn các bạn và chúc các bạn thành công hơn nữa",
+    },
+    {
+      key: 2,
+      name: "Minh Quốc",
+      cmt: "Rất ấn tượng với dịch vụ và nhân viên phục vụ ở đây, sẽ ghé thăm các bạn vào lần sau",
+    },
+  ];
+  const images: SliderItem[] = [
+    {
+      key: 1,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 2,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 3,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 4,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 5,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 6,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 7,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 8,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 9,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+  ];
+  const arrRooms: RoomDetails[] = [
+    {
+      key: "SUPERIOR",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_0272-min.jpg",
+      name: "PHÒNG SUPERIOR",
+      bio: "Phòng Superior có diện tích 28m2 được thiết kế hài hòa với nội thất sang trọng và đầy đủ tiện nghi hiện đại mang đến sự thoải mái, tiện lợi nhất cho quý khách.",
+    },
+    {
+      key: "DELUXE",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_0249-min.jpg",
+      name: "PHÒNG DELUXE",
+      bio: "Phòng Deluxe với thiết kế hài hòa, nội thất sang trọng với đầy đủ tiện nghi hiện đại. Diện tích khoảng 26 - 28m2 với hướng nhìn ra phía thành phố giúp quý khách có thể ngắm nhìn khung cảnh xung quanh.",
+    },
+    {
+      key: "EXECUTIVE",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_0258-min.jpg",
+      name: "PHÒNG EXECUTIVE",
+      bio: "Phòng Executive có tầm nhìn bao quát, có diện tích khoảng 32m2 được trang bị giường ngủ king size đem lại sự thoải mái và thư giãn nhất cho quý khách, với lối kiến trúc độc đáo và nội thất sang trọng sẽ mang đến cho bạn cảm giác thoải mái, như lạc vào không gian sang trọng, đẳng cấp.",
+    },
+    {
+      key: "JUNIORSUITE",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_0303-min.jpg",
+      name: "PHÒNG JUNIOR SUITE",
+      bio: "Phòng Junior suite có tầm nhìn bao quát, có diện tích khoảng 40m2 được trang bị giường ngủ king size và ghế sofa đem lại sự thoải mái và thư giãn nhất cho quý khách, với lối kiến trúc độc đáo và nội thất sang trọng và tầm nhìn trên cao sẽ mang đến cho bạn cảm giác thoải mái, lạc vào 1 không gian sang trọng, đẳng cấp",
+    },
+  ];
+  const outServices: outServices[] = [
+    {
+      key: "RESTAURANT",
+      name: "NHÀ HÀNG REYNA",
+      url: "https://reynaluxuryhotel.com/files/images/Restaurant/nh.jpg",
+      bio: "Nhà hàng Reyna Hà Nội phục vụ tiệc buffet quốc tế vào buổi sáng và A la carte suốt cả ngày. Nhà hàng của chúng tôi mang đến những trải nghiệm ẩm thực đáng nhớ thông qua các hương vị mang bản sắc quốc tế và địa phương.",
+    },
+    {
+      key: "MASSAGE",
+      name: "DỊCH VỤ MÁT XA",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_8673-min.jpg",
+      bio: "Chúng tôi cung cấp dịch vụ mát-xa chất lượng cao, đặt lịch linh hoạt và cam kết cung cấp dịch vụ chăm sóc chất lượng. Cho dù bạn đang muốn tìm cảm giác cân bằng và yên bình hay giảm đau, chúng tôi đều có thể đáp ứng nhu cầu trị liệu xoa bóp của bạn.",
+    },
+    {
+      key: "GYM",
+      name: "PHÒNG GYM",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_8637-min.jpg",
+      bio: (
+        <div className="text-center">
+          - Địa điểm: Tầng hầm <br />
+          - Thời gian phục vụ: 06:00-22:00 <br />
+          Miễn phí phục vụ cho Quý khách hàng lưu trú tại khách sạn
+        </div>
+      ),
+    },
+  ];
   return (
-    <div className='relative ' >
+    <div className="relative">
+      {/* slider */}
+      <SliderComponent arrImages={sliders} />
 
-{/* slider */}
-        <SliderComponent arrImages={sliders}/>
+      {/* Book Now  */}
+      <BookNow />
+      <div className=" sm:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
+        {/* About us */}
+        <AboutComponent />
+      </div>
+      {/* Room */}
+      <RoomSwipers arrRooms={arrRooms} />
+      <div className=" sm:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
+        {/* service  */}
+        <Service arrServices={outServices} />
+      </div>
+      {/* Feedback */}
+      <SliderFeedback arrFeedback={Feedbacks} />
 
-{/* Book Now  */}
-        <BookNow />
-
-{/* About us */}
-
-        <div>
-            <div className='flex justify-center mt-[60px] bg-white'>
-                <div className='px-[15px] w-[585px]'>
-                    <h4 className='text-h2 my-[10px] text-[#333]'>
-                        VỀ CHÚNG TÔI
-                    </h4>
-                    <div className='text-[16px] leading-h4 text-justify text-textCl'>
-                        <strong>Khách sạn Reyna </strong>
-                        <strong>Luxury</strong>&nbsp;
-                            "là thành viên tiếp theo của&nbsp;hệ thống khách sạn Reyna, được quản lý bởi tập đoàn 22 Land.<br/>
-                            Khách sạn tọa lạc tại vị trí 34 Phố Miếu Đầm, phường Mễ Trì, Nam Từ Liêm, Hà Nội - Nơi&nbsp;trung tâm hành chính quan trọng của quốc gia. 
-                            Tiếp giáp với nhiều vị trí quan trọng:&nbsp;cách sân bay Nội Bài 25km, cách Trung tâm hội nghị quốc gia 3 phút đi bộ, gần sân vận động Quốc gia 
-                            Mỹ Đình chỉ vài phút lái xe, đối diện với khách sạn JW Marriott,&nbsp;quý khách có thể dễ dàng di chuyển đến các tòa nhà văn phòng&nbsp;cũng như 
-                            các khu công nghiệp lớn ở Hà Nội. Với vị trí thuận tiện di chuyển đến các Khu công nghiệp lân cận, gần các tòa nhà văn phòng và trung tâm thương mại, 
-                            khách sạn Reyna Luxury hứa hẹn sẽ trở thành điểm dừng chân, nghỉ ngơi lý tưởng&nbsp;cho những chuyến đi công tác hay du lịch của khách hàng trong nước và quốc tế."
-                    </div>
-                    <div className='my-[50px]'>
-                        <a href="https://reynaluxuryhotel.com/Gioi-thieu/61/khach-san-reyna-luxury" className='py-[15px] px-[30px] bg-[#ae8545] text-white hover:bg-white hover:text-[#ae8545] hover:border-[1px]'>Xem thêm</a>
-                    </div>
-                </div>
-                <div className='px-[15px]'>
-                    <img src="https://reynaluxuryhotel.com/files/images/Article/about.jpg" alt="" className='w-[555px] h-[370px]'/>
-                </div>
-            </div>
-        </div>
-
-{/* Room */}
-
-        <div className="flex bg-center justify-center bg-cover pb-10 bg-no-repeat mt-[60px] mb-10" style={{backgroundImage: 'url("https://reynaluxuryhotel.com/Content/Img/bgr-room.jpg")', backgroundAttachment: 'fixed'}}>
-            <div className='w-[1170px] px-[15px]'>
-                <h4 className='text-h2 text-center text-white my-[30px] mt-[40px]'>
-                    PHÒNG KHÁCH SẠN
-                </h4>
-                <div className="">
-                    <RoomSwiper />
-                </div>
-            </div>
-        </div>
-
-{/* service  */}
-       <Service />                
-
-{/* Feedback */}
-        <div className='bg-black flex '>
-            <div className=' w-[50%] '>
-                <div className='ml-[174.6px] pt-5 pb-[30px] pl-[15px] pr-20 '>
-                    <h4 className='text-h2 text-[#fff] my-[10px]'>
-                        PHẢN HỒI KHÁCH HÀNG
-                    </h4>
-                    <div className='mt-[15px] mb-[30px] text-white text-lg'>
-                        Lorem Ipsum is simply dummy text of the printing and Lorem Ipsum has been the great font.
-                    </div>
-                    <a href="https://www.tripadvisor.com.vn/Hotel_Review-g27469010-d20319119-Reviews-Reyna_Hotel_Hanoi-Nam_T_Liem_Tu_Liem_Hanoi.html"> 
-                        <img src="https://reynaluxuryhotel.com/Content/Img/tripad_certificate.png" alt="ok" />
-                    </a>
-                </div>
-            </div>
-            <div className='bg-[#ae8545] w-[50%]'>                
-                <div className='mr-[174.6px] py-5 pr-[15px] pl-20'>
-                <SliderFeedback arrFeedback={Feedbacks}/>
-                </div>
-                            
-            </div>
-        </div>
-
-{/* Image */}
-
-        <div className='bg-white py-10'>
-            <h4 className='text-h2 text-[#000] text-center mb-[15px] mt-[10px]'>
-                HÌNH ẢNH
-            </h4>
-            <div>
-                <SliderImages arrImages={images} />
-            </div>
-        </div>
+      {/* Image */}
+      <SliderImages arrImages={images} />
     </div>
   );
 };
