@@ -1,174 +1,176 @@
-import React, { useState } from 'react';
-import Slider from "react-slick";
-import Form from 'react-bootstrap/Form';
-import DatePicker from 'react-datepicker';
-import { Button, Card, Rate } from 'antd';
-import { useNavigate } from 'react-router';
-import "slick-carousel/slick/slick.css"; 
+import React from "react";
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
+import SliderComponent from "../Components/Homepage/SliderComponent";
+import { Feedback, RoomDetails, SliderItem, outServices } from "../interface";
+import SliderImages from "../Components/Homepage/SliderImages";
+import BookNow from "../Components/Homepage/BookNow";
+import Service from "../Components/Homepage/Service";
+import SliderFeedback from "../Components/Homepage/SliderFeedback";
+import AboutComponent from "../Components/Homepage/AboutComponent";
+import RoomSwipers from "../Components/Homepage/RoomSwiper";
 
-const HomePage: React.FC =()  => {
-const navigate=useNavigate()
-
-  const [selectedDateIn, setSelectedDateIn] = useState<Date | null>(null);
-    const [selectedDateOut, setSelectedDateOut] = useState<Date | null>(null);
-    const handleRoomPage =()=>{
-        navigate('/room')
-    }
-    const handleProduct=()=>{
-        navigate('/detail-room')
-    }
-    const handleChangeIn = (date:Date) => {
-        setSelectedDateIn(date);
-    };const handleChangeOut = (date:Date) => {
-        setSelectedDateOut(date);
-    };
-    const sliders:string[] = [
-        'https://khachsan3.migoda.vn/wp-content/uploads/2019/11/CortonaInn-AboutUs-Hero-5bf5845edceef.jpg',
-        'https://khachsan3.migoda.vn/wp-content/uploads/2019/11/slider-2.jpg',
-        'https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/06/rosamia-da-nang-hotel-be-boi-ngoai-troi-1.jpg'
-    ];
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        fade: true,
-        arrows: false // Ẩn các nút điều hướng
-    };
+const HomePage: React.FC = () => {
+  const sliders: SliderItem[] = [
+    {
+      key: 1,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn6.jpg",
+      name: "Skider1",
+    },
+    {
+      key: 2,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn8.jpg",
+      name: "Skider2",
+    },
+    {
+      key: 3,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn2.jpg",
+      name: "Skider3",
+    },
+    {
+      key: 4,
+      url: "https://reynaluxuryhotel.com/files/images/banner/bn1.jpg",
+      name: "Skider4",
+    },
+  ];
+  const Feedbacks: Feedback[] = [
+    {
+      key: 1,
+      name: "Hoàng Anh",
+      cmt: "Dịch vụ rất tốt và chuyên nghiệp, rất cảm ơn các bạn và chúc các bạn thành công hơn nữa",
+    },
+    {
+      key: 2,
+      name: "Minh Quốc",
+      cmt: "Rất ấn tượng với dịch vụ và nhân viên phục vụ ở đây, sẽ ghé thăm các bạn vào lần sau",
+    },
+  ];
+  const images: SliderItem[] = [
+    {
+      key: 1,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 2,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 3,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 4,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 5,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 6,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 7,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 8,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+    {
+      key: 9,
+      url: "https://reynaluxuryhotel.com/files/images/gallery/DSC_0359.jpg",
+      name: "image1",
+    },
+  ];
+  const arrRooms: RoomDetails[] = [
+    {
+      key: "SUPERIOR",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0272-min.jpg",
+      name: "PHÒNG SUPERIOR",
+      bio: "Phòng Superior có diện tích 28m2 được thiết kế hài hòa với nội thất sang trọng và đầy đủ tiện nghi hiện đại mang đến sự thoải mái, tiện lợi nhất cho quý khách.",
+      url: "/room/details",
+    },
+    {
+      key: "DELUXE",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0249-min.jpg",
+      name: "PHÒNG DELUXE",
+      bio: "Phòng Deluxe với thiết kế hài hòa, nội thất sang trọng với đầy đủ tiện nghi hiện đại. Diện tích khoảng 26 - 28m2 với hướng nhìn ra phía thành phố giúp quý khách có thể ngắm nhìn khung cảnh xung quanh.",
+      url: "",
+    },
+    {
+      key: "EXECUTIVE",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0258-min.jpg",
+      name: "PHÒNG EXECUTIVE",
+      bio: "Phòng Executive có tầm nhìn bao quát, có diện tích khoảng 32m2 được trang bị giường ngủ king size đem lại sự thoải mái và thư giãn nhất cho quý khách, với lối kiến trúc độc đáo và nội thất sang trọng sẽ mang đến cho bạn cảm giác thoải mái, như lạc vào không gian sang trọng, đẳng cấp.",
+      url: "",
+    },
+    {
+      key: "JUNIORSUITE",
+      image: "https://reynaluxuryhotel.com/files/images/DSC_0303-min.jpg",
+      name: "PHÒNG JUNIOR SUITE",
+      bio: "Phòng Junior suite có tầm nhìn bao quát, có diện tích khoảng 40m2 được trang bị giường ngủ king size và ghế sofa đem lại sự thoải mái và thư giãn nhất cho quý khách, với lối kiến trúc độc đáo và nội thất sang trọng và tầm nhìn trên cao sẽ mang đến cho bạn cảm giác thoải mái, lạc vào 1 không gian sang trọng, đẳng cấp",
+      url: "",
+    },
+  ];
+  const outServices: outServices[] = [
+    {
+      key: "RESTAURANT",
+      name: "NHÀ HÀNG REYNA",
+      url: "https://reynaluxuryhotel.com/files/images/Restaurant/nh.jpg",
+      bio: "Nhà hàng Reyna Hà Nội phục vụ tiệc buffet quốc tế vào buổi sáng và A la carte suốt cả ngày. Nhà hàng của chúng tôi mang đến những trải nghiệm ẩm thực đáng nhớ thông qua các hương vị mang bản sắc quốc tế và địa phương.",
+    },
+    {
+      key: "MASSAGE",
+      name: "DỊCH VỤ MÁT XA",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_8673-min.jpg",
+      bio: "Chúng tôi cung cấp dịch vụ mát-xa chất lượng cao, đặt lịch linh hoạt và cam kết cung cấp dịch vụ chăm sóc chất lượng. Cho dù bạn đang muốn tìm cảm giác cân bằng và yên bình hay giảm đau, chúng tôi đều có thể đáp ứng nhu cầu trị liệu xoa bóp của bạn.",
+    },
+    {
+      key: "GYM",
+      name: "PHÒNG GYM",
+      url: "https://reynaluxuryhotel.com/files/images/DSC_8637-min.jpg",
+      bio: (
+        <div className="text-center">
+          - Địa điểm: Tầng hầm <br />
+          - Thời gian phục vụ: 06:00-22:00 <br />
+          Miễn phí phục vụ cho Quý khách hàng lưu trú tại khách sạn
+        </div>
+      ),
+    },
+  ];
   return (
-    <div className='relative bg-background' >
-        <Slider {...settings} >
-            {sliders.map((slider, index) => (
-                <div key={index} className='h-full'>
-                    <img src={slider} alt={`slider-${index}`} className='md:h-[500px] md:hidden w-full object-cover' />
-                </div>
-            ))}
-        </Slider>
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-            <Slider {...settings}></Slider>
-        </div>
-        <div className='grid grid-cols-6 w-full h-24 bg-[#000] mt-[-5.6px]'>
-            <div className='text-white font-bold py-[17px] px-[15px] text-center'>
-                <h1 className='text-2xl'>
-                Đặt phòng ngay
-                </h1>
-                <span>Ưu đãi giá thấp nhất</span>
-            </div>
-            <div className='justify-center px-[15px] bg-goldlg '>
-                <Form.Select aria-label="Default select example" className='text-center h-10 w-[224px] mt-[25px]' >
-                    <option>Người lớn</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="3">3</option>
-                    <option value="3">3</option>
-                    <option value="3">3</option>
-                </Form.Select>
-            </div>
-            <div className='justify-center px-[15px] bg-goldlg '>
-                <DatePicker
-                    selected={selectedDateIn}
-                    onChange={handleChangeIn}
-                    dateFormat="dd/MM/yyyy" // Định dạng ngày tháng
-                    placeholderText="Ngày đến"
-                    className='text-center h-10 w-[224px] mt-[25px]'
-                />
-            </div>
-            <div className='justify-center px-[15px] bg-goldlg '>
-                <DatePicker
-                    selected={selectedDateOut}
-                    onChange={handleChangeOut}
-                    dateFormat="dd/MM/yyyy" // Định dạng ngày tháng
-                    placeholderText="Ngày đi"
-                    className='text-center h-10 w-[224px] mt-[25px]'
-                />
-            </div>
-            <div className='justify-center px-[15px] bg-goldlg'>
-                <Form.Select aria-label="Default select example" className='text-center h-10 w-[224px] mt-[25px]' >
-                    <option>Trẻ em</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="3">3</option>
-                    <option value="3">3</option>
-                    <option value="3">3</option>
-                </Form.Select>
-            </div>
-            <div className='justify-center px-[15px] bg-goldlg text-white items-center text-center '>
-                <Button className='bg-[#8e6729] h-[96px] px-12 text-white border-none hover:text-goldlg'>KIỂM TRA</Button>
-            </div>
-        </div>
-        <div className='px-48'>
-            <div className=' mt-7 px-3 pb-5 '>
-                <div className='text-center'>
-                    <h2 className='mx-4 font-bold text-2xl'>CÁC PHÒNG SẴN CÓ TẠI KHÁCH SẠN</h2>
-                </div>
-                <div className='flex items-center justify-center '>
-                    <img 
-                    className='w-[280px] h-[45px]]'
-                    src="https://moscowballetlc.com/wp-content/uploads/2017/11/razdelitel1.png" alt="" />
-                </div>
-            </div>
-            <div>
-                <div className='flex grid-cols-3 gap-5'>
-                    <Card
-                        onClick={handleProduct}
-                        hoverable
-                        className='w-[367px] text-center '
-                        cover={
-                        <img
-                            alt="example"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                        />
-                    }>
-                        <h2 className='text-[#AC964B] text-xl text-center font-serif hover:text-[#987C1f]'>Superior Twin City View Room</h2>
-                        <div>
-                            <Rate className='text-black p-3' disabled defaultValue={1} />
-                        </div>
-                        <span className='text-[#ff5722] text-[19px] text-center'>1.000.000₫/đêm</span>
-                    </Card>
-                    
-                </div>
-                <div className='flex justify-center my-4'>
-                    <Button onClick={handleRoomPage} danger>Xem thêm</Button>
-                </div>
-            </div>
-        </div>
-        <div className='px-48 bg-white'>
-            <div className=' mt-7 pt-3'>
-                <div className='  px-3 pb-5 '>
-                    <div className='text-center'>
-                        <h2 className='mx-4 font-bold text-2xl'>GREAT VALUE IN AN IDEAL LOCATION</h2>
-                    </div>
-                    <div className='flex items-center justify-center '>
-                        <img 
-                        className='w-[280px] h-[45px]]'
-                        src="https://moscowballetlc.com/wp-content/uploads/2017/11/razdelitel1.png" alt="" />
-                    </div>
-                </div>
-                <div className='grid grid-cols-3 gap-5'>
-                    <div className='col-span-2 text-base leading-relaxed text-gray-700'>
-                        <strong>Khách sạn Reyna Luxury</strong>&nbsp;là thành viên tiếp theo của hệ thống khách sạn Reyna, được quản lý bởi tập đoàn 22 Land.<br/>
-                        Khách sạn tọa lạc tại vị trí 34 Phố Miếu Đầm, phường Mễ Trì, Nam Từ Liêm, Hà Nội - Nơi trung tâm hành chính quan trọng của quốc gia. 
-                        Tiếp giáp với nhiều vị trí quan trọng: cách sân bay Nội Bài 25km, cách Trung tâm hội nghị quốc gia 3 phút đi bộ, gần sân vận động Quốc gia 
-                        Mỹ Đình chỉ vài phút lái xe, đối diện với khách sạn JW Marriott, quý khách có thể dễ dàng di chuyển đến các tòa nhà văn phòng cũng như các 
-                        khu công nghiệp lớn ở Hà Nội. Với vị trí thuận tiện di chuyển đến các Khu công nghiệp lân cận, gần các tòa nhà văn phòng và trung tâm thương mại, 
-                        khách sạn Reyna Luxury hứa hẹn sẽ trở thành điểm dừng chân, nghỉ ngơi lý tưởng cho những chuyến đi công tác hay du lịch của khách hàng trong nước 
-                        và quốc tế.
-                    </div>
-                    <div className='col-span-1 ml-4'>
-                        <img className='w-96 ' src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' alt=''/>
-                    </div>
-</div>
-  
-            </div>
-        </div>
+    <div className="relative mt-[99px]">
+      {/* slider */}
+      <SliderComponent arrImages={sliders} />
+
+      {/* Book Now  */}
+      <BookNow />
+      <div className="md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
+        {/* About us */}
+        <AboutComponent />
+      </div>
+      {/* Room */}
+      <RoomSwipers arrRooms={arrRooms} />
+      <div className="md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto">
+        {/* service  */}
+        <Service arrServices={outServices} />
+      </div>
+      {/* Feedback */}
+      <SliderFeedback arrFeedback={Feedbacks} />
+
+      {/* Image */}
+      <SliderImages arrImages={images} />
     </div>
   );
 };

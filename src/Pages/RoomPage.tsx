@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+// import Carousel from 'react-bootstrap/Carousel';
+import RoomSwiper from "../Components/Homepage/RoomSwiper";
 
-const RoomPage:React.FC = () => {
+const RoomPage: React.FC = () => {
   return (
-    <div className='h-[500px]'>RoomPage</div>
-  )
-}
+    // <RoomSwiper arrRooms={}/>
+    <div></div>
+  );
+};
 
-export default RoomPage
+export default RoomPage;
