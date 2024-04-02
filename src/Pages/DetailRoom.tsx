@@ -73,7 +73,7 @@ const detailServices: string[] = [
 
 const DetailRoom: React.FC = () => {
   useEffect(() => {
-    document.title = "Tiêu đề mới";
+    document.title = "Details";
   }, []);
   return (
     <div className="relative">
