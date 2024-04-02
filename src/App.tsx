@@ -11,6 +11,7 @@ import LoginPage from "./Pages/LoginPage";
 import ABoutPage from "./Pages/ABoutPage";
 import RoomPage from "./Pages/RoomPage";
 import DetailRoom from "./Pages/DetailRoom";
+import BookingPage from "./Pages/BookingPage";
 
 const appRoutes: RouteObject[] = [
   {
@@ -36,6 +37,10 @@ const appRoutes: RouteObject[] = [
       {
         path: "/room/details",
         element: <DetailRoom />,
+      },
+      {
+        path: "/booking",
+        element: <BookingPage />,
       },
     ],
   },
