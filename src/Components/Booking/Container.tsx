@@ -205,7 +205,18 @@ const Container: React.FC = () => {
                 <InputComponent lable="Thành Phố" span="" />
               </div>
               <div className="col-span-1 px-[15px]">
-                <InputComponent lable="Quốc gia" span="*" />
+                <div className="block mb-[15px]">
+                  <label htmlFor="CheckIn" className="mb-[5px]">
+                    Quốc gia
+                    <span aria-required="true">*</span>
+                  </label>
+                  <select className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-10">
+                    <option>Lựa chọn quốc gia</option>
+                    <option value="Việt Nam">Việt Nam</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                  </select>
+                </div>
 
                 <InputComponent lable="Đến với chuyến bay" span="*" />
 
