@@ -11,37 +11,37 @@ const qualitys = [
   {
     key: 0,
     value: "0",
-    lable: "0",
+    label: "0",
   },
   {
     key: 1,
     value: "1",
-    lable: "1",
+    label: "1",
   },
   {
     key: 2,
     value: "2",
-    lable: "2",
+    label: "2",
   },
   {
     key: 3,
     value: "3",
-    lable: "3",
+    label: "3",
   },
   {
     key: 4,
     value: "4",
-    lable: "4",
+    label: "4",
   },
   {
     key: 5,
     value: "5",
-    lable: "5",
+    label: "5",
   },
   {
     key: 6,
     value: "6",
-    lable: "6",
+    label: "6",
   },
 ];
 const Container: React.FC = () => {
@@ -87,10 +87,6 @@ const Container: React.FC = () => {
 
       setAdult(variables.Adult);
       setChild(variables.Child);
-      console.log(
-        new Date(variables.Checkin).getDate(),
-        dayjs(new Date(variables.Checkin)).format("DD/MM/YYYY")
-      );
       setCheckInDate(dayjs(variables.Checkin, "DD/MM/YYYY").toDate());
       setCheckOutDate(dayjs(variables.Checkout, "DD/MM/YYYY").toDate());
     }
@@ -121,7 +117,7 @@ const Container: React.FC = () => {
                     Ngày đến
                     <span aria-required="true">*</span>
                   </label>
-                  {checkInDate?.toString()}
+                  {/* {checkInDate?.toString()} */}
                   <DatePicker
                     // value={"10/04/2024"}
                     selected={checkInDate}
@@ -142,13 +138,15 @@ const Container: React.FC = () => {
                       value={adult}
                       onChange={handleSelectChangeAdult}
                     >
-                      {/* <option value={""} disabled selected></option> */}
+                      <option value="" disabled>
+                        Người lớn
+                      </option>
                       {qualitys.map((optionPeople) => (
                         <option
                           value={optionPeople.value}
                           key={optionPeople.key}
                         >
-                          {optionPeople.lable}
+                          {optionPeople.label}
                         </option>
                       ))}
                     </select>
@@ -185,14 +183,15 @@ const Container: React.FC = () => {
                       value={child}
                       onChange={handleSelectChangeChild}
                     >
-                      {/* <option value={""} disabled selected></option> */}
-
+                      <option value="" disabled>
+                        Trẻ em
+                      </option>
                       {qualitys.map((optionPeople) => (
                         <option
                           value={optionPeople.value}
                           key={optionPeople.key}
                         >
-                          {optionPeople.lable}
+                          {optionPeople.label}
                         </option>
                       ))}
                     </select>
@@ -233,7 +232,7 @@ const Container: React.FC = () => {
                       <select className="p-1 border border-solid border-[#333]">
                         {qualitys.map((quality) => (
                           <option value={quality.value} key={quality.key}>
-                            {quality.lable}
+                            {quality.label}
                           </option>
                         ))}
                       </select>
@@ -252,7 +251,7 @@ const Container: React.FC = () => {
                     <span aria-required="true">*</span>
                   </label>
                   <select className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-dtext-darkBlue ">
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Lựa chọn
                     </option>
                     <option value="Ông">Ông</option>
@@ -277,7 +276,7 @@ const Container: React.FC = () => {
                     <span aria-required="true">*</span>
                   </label>
                   <select className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-dtext-darkBlue ">
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Lựa chọn quốc gia
                     </option>
                     <option value="Việt Nam">Việt Nam</option>
@@ -325,11 +324,3 @@ const Container: React.FC = () => {
 };
 
 export default Container;
-
-// <div className="block mb-[15px] font-bold">
-//   <label htmlFor="CheckIn" className="mb-[5px]">
-//     Đến với chuyến bay
-//     <span aria-required="true">*</span>
-//   </label>
-//   <input className="py-[6px] px-3 w-full text-darkBlue border border-solid border-darkBlue h-10" />
-// </div>;

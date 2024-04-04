@@ -3,47 +3,49 @@ import { IoCalendarSharp } from "react-icons/io5";
 import { FaAngleRight } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
-import dayjs from "dayjs"; // Import thư viện Day.js
-import "dayjs/locale/vi"; // Import locale cho Day.js
+import dayjs from "dayjs";
+import "dayjs/locale/vi";
 import "./booknow.css";
 
 const optionPeoples = [
   {
     key: 1,
     value: "1",
-    lable: "1",
+    label: "1",
   },
   {
     key: 2,
     value: "2",
-    lable: "2",
+    label: "2",
   },
   {
     key: 3,
     value: "3",
-    lable: "3",
+    label: "3",
   },
   {
     key: 4,
     value: "4",
-    lable: "4",
+    label: "4",
   },
   {
     key: 5,
     value: "5",
-    lable: "5",
+    label: "5",
   },
   {
     key: 6,
     value: "6",
-    lable: "6",
+    label: "6",
   },
 ];
+
 const BookNow: React.FC = () => {
   const [checkInDate, setCheckInDate] = useState<Date | null>(null);
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
   const [selectedValueIn, setSelectedValueIn] = useState("");
   const [selectedValueOut, setSelectedValueOut] = useState("");
+
   const handleCheckInChange = (date: Date | null) => {
     setCheckInDate(date);
   };
@@ -51,29 +53,18 @@ const BookNow: React.FC = () => {
   const handleCheckOutChange = (date: Date | null) => {
     setCheckOutDate(date);
   };
-  const handleSelectCheckIn = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValueIn(event.target.value);
-  };
-  const handleSelectCheckOut = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedValueOut(event.target.value);
-  };
 
-  useEffect(() => {
-    console.log(checkInDate?.toISOString());
-  }, [checkInDate]);
   const navigate = useNavigate();
+
   const handleBooking = () => {
     if (checkInDate && checkOutDate) {
-      // Lấy ngày tháng từ đối tượng Date và định dạng lại bằng Day.js
       const formattedCheckInDate = dayjs(checkInDate).format("MM%2FDD%2FYYYY");
       const formattedCheckOutDate =
         dayjs(checkOutDate).format("MM%2FDD%2FYYYY");
 
       console.log("Check-in Date:", formattedCheckInDate);
       console.log("Check-out Date:", formattedCheckOutDate);
-      // Thực hiện chuyển hướng đến trang booking với các thông tin đã được xác nhận
+
       navigate(
         `/booking/Adult=${selectedValueIn}&Checkin=${formattedCheckInDate}&Checkout=${formattedCheckOutDate}&Child=${selectedValueOut}`
       );
@@ -98,22 +89,22 @@ const BookNow: React.FC = () => {
             <select
               name="Adult"
               className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-10"
-              value={selectedValueIn} // Đặt giá trị của select bằng giá trị được lưu trữ trong state
-              onChange={handleSelectCheckIn}
+              value={selectedValueIn}
+              onChange={(event) => setSelectedValueIn(event.target.value)}
             >
-              <option value={""} disabled selected>
+              <option value="" disabled>
                 Người lớn
               </option>
 
               {optionPeoples.map((optionPeople) => (
                 <option value={optionPeople.value} key={optionPeople.key}>
-                  {optionPeople.lable}
+                  {optionPeople.label}
                 </option>
               ))}
             </select>
           </div>
         </div>
-        {/* Check in */}
+
         <div className="relative px-[15px] xl:left-[10px]">
           <div className="mt-[25px] relative">
             <DatePicker
@@ -127,12 +118,11 @@ const BookNow: React.FC = () => {
           </div>
         </div>
 
-        {/* Check out */}
         <div className="relative px-[15px]">
           <div className="mt-[25px] relative">
             <DatePicker
               selected={checkOutDate}
-              onChange={handleCheckOutChange} // Thêm onChange ở đây
+              onChange={handleCheckOutChange}
               className="pl-[10px] pr-[30px] w-full text-[#333] border border-solid border-[#333] h-10"
               dateFormat="dd/MM/yyyy"
               placeholderText="Ngày đi"
@@ -146,16 +136,16 @@ const BookNow: React.FC = () => {
             <select
               name="Child"
               className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-10"
-              onChange={handleSelectCheckOut}
+              onChange={(event) => setSelectedValueOut(event.target.value)}
               value={selectedValueOut}
             >
-              <option value={""} disabled selected>
+              <option value="" disabled>
                 Trẻ em
               </option>
 
               {optionPeoples.map((optionChild) => (
                 <option value={optionChild.value} key={optionChild.key}>
-                  {optionChild.lable}
+                  {optionChild.label}
                 </option>
               ))}
             </select>
