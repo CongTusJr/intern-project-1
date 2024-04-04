@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import InputComponent from "./InputComponent";
 import { Checkbox } from "antd";
 import type { CheckboxProps } from "antd";
+import DatePicker from "react-datepicker";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const qualitys = [
+  {
+    key: 0,
+    value: "0",
+    lable: "0",
+  },
   {
     key: 1,
     value: "1",
@@ -37,25 +45,70 @@ const qualitys = [
   },
 ];
 const Container: React.FC = () => {
-  const [selectedDateIn, setSelectedDateIn] = useState<string>("");
-  const [selectedDateOut, setSelectedDateOut] = useState<string>("");
+  const [checkInDate, setCheckInDate] = useState<any>(null);
+  const [checkOutDate, setCheckOutDate] = useState<any>(null);
   const [showAlert, setShowAlert] = useState<boolean>(false);
+  const params = useParams();
+  const [adult, setAdult] = useState("");
+  const [child, setChild] = useState("");
   const onChange: CheckboxProps["onChange"] = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
-
-  const handleDateChangeIn = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedDateIn(event.target.value);
+  const handleCheckInChange = (
+    date: Date | null,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setCheckInDate(date);
     setShowAlert(false);
   };
-  const handleDateChangeOut = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (dayjs(event.target.value).isBefore(selectedDateIn)) {
+
+  const handleCheckOutChange = (
+    date: Date | null
+    // event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setCheckOutDate(date); // Set checkOutDate with date parameter
+    if (dayjs(date).isBefore(checkInDate)) {
+      // Compare dates directly with date parameter
       setShowAlert(true);
       return;
     }
-    setSelectedDateOut(event.target.value);
     setShowAlert(false);
   };
+  useEffect(() => {
+    if (params.value) {
+      const value: string = params.value;
+      const parts: string[] = value.split("&");
+      const variables: { [key: string]: string } = {};
+
+      parts.forEach((part) => {
+        const [variable, value] = part.split("=");
+        variables[variable] = value;
+      });
+
+      setAdult(variables.Adult);
+      setChild(variables.Child);
+      console.log(
+        new Date(variables.Checkin).getDate(),
+        dayjs(new Date(variables.Checkin)).format("DD/MM/YYYY")
+      );
+      setCheckInDate(dayjs(variables.Checkin, "DD/MM/YYYY").toDate());
+      setCheckOutDate(dayjs(variables.Checkout, "DD/MM/YYYY").toDate());
+    }
+  }, [params]);
+
+  const handleSelectChangeAdult = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setAdult(event.target.value);
+    // console.log(event);
+  };
+  const handleSelectChangeChild = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setChild(event.target.value);
+    // console.log(event);
+  };
+
   return (
     <div className="block w-full md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto mt-[60px] px-[15px] text-darkBlue">
       <div>
@@ -63,28 +116,33 @@ const Container: React.FC = () => {
           <form action="/">
             <div className="bolck lg:grid lg:grid-cols-2">
               <div className="col-span-1 px-[15px]">
-                <div className="block mb-[15px] font-bold">
-                  <label htmlFor="CheckIn" className="mb-[5px]">
+                <div className="block mb-[15px] ">
+                  <label htmlFor="CheckIn" className="mb-[5px] font-bold">
                     Ngày đến
                     <span aria-required="true">*</span>
                   </label>
-                  <input
-                    type="date"
-                    value={selectedDateIn} // Assign selectedDate to value
-                    onChange={handleDateChangeIn} // Handle date change
-                    className="px-3 py-[6px] w-full text-darkBlue border border-solid border-darkBlue"
+                  {checkInDate?.toString()}
+                  <DatePicker
+                    // value={"10/04/2024"}
+                    selected={checkInDate}
+                    onChange={handleCheckInChange}
+                    className="px-3 py-[6px] w-full h-[50px] text-darkBlue border border-solid border-darkBlue "
+                    dateFormat="dd/MM/YYYY"
                   />
                 </div>
                 <div>
-                  <div className="block mb-[15px] font-bold">
-                    <label htmlFor="CheckIn" className="mb-[5px]">
+                  <div className="block mb-[15px]">
+                    <label htmlFor="CheckIn" className="mb-[5px] font-bold">
                       Người lớn
                       <span aria-required="true">*</span>
                     </label>
                     <select
                       name="DateIn"
-                      className="py-[6px] px-3 w-full text-darkBlue border border-solid border-darkBlue h-10"
+                      className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-darkBlue "
+                      value={adult}
+                      onChange={handleSelectChangeAdult}
                     >
+                      {/* <option value={""} disabled selected></option> */}
                       {qualitys.map((optionPeople) => (
                         <option
                           value={optionPeople.value}
@@ -98,16 +156,16 @@ const Container: React.FC = () => {
                 </div>
               </div>
               <div className="col-span-1 px-[15px]">
-                <div className="block mb-[15px] font-bold">
-                  <label htmlFor="CheckIn" className="mb-[5px]">
+                <div className="block mb-[15px]">
+                  <label htmlFor="CheckIn" className="mb-[5px] font-bold">
                     Ngày đi
                     <span aria-required="true">*</span>
                   </label>
-                  <input
-                    type="date"
-                    value={selectedDateOut} // Assign selectedDate to value
-                    onChange={handleDateChangeOut} // Handle date change
-                    className="px-3 py-[6px] w-full text-darkBlue border border-solid border-darkBlue"
+                  <DatePicker
+                    selected={checkOutDate}
+                    onChange={handleCheckOutChange}
+                    className="px-3 py-[6px] w-full h-[50px] text-darkBlue border border-solid border-darkBlue"
+                    dateFormat="dd/MM/yyyy"
                   />
                 </div>
                 {showAlert && (
@@ -116,15 +174,19 @@ const Container: React.FC = () => {
                   </p>
                 )}
                 <div>
-                  <div className="block mb-[15px] font-bold">
-                    <label htmlFor="CheckIn" className="mb-[5px]">
+                  <div className="block mb-[15px]">
+                    <label htmlFor="CheckIn" className="mb-[5px] font-bold">
                       Trẻ em
                       <span aria-required="true">*</span>
                     </label>
                     <select
                       name="DateOut"
-                      className="py-[6px] px-3 w-full text-darkBlue border border-solid border-darkBlue h-10"
+                      className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-darkBlue"
+                      value={child}
+                      onChange={handleSelectChangeChild}
                     >
+                      {/* <option value={""} disabled selected></option> */}
+
                       {qualitys.map((optionPeople) => (
                         <option
                           value={optionPeople.value}
@@ -140,7 +202,7 @@ const Container: React.FC = () => {
             </div>
             <div className="relative px-[15px]">
               <table className=" w-full max-w-full border border-solid border-[#ddd] border-collapse my-5">
-                <tbody>
+                <thead>
                   <tr className="grid grid-cols-12">
                     <td className="col-span-4 p-2 border border-solid  text-[#333] border-[#ddd]">
                       <strong>Loại Phòng</strong>
@@ -155,12 +217,14 @@ const Container: React.FC = () => {
                       <strong> </strong>
                     </td>
                   </tr>
+                </thead>
+                <tbody>
                   <tr className="grid grid-cols-12">
-                    <td className="col-span-4 p-2 border border-solid border-[#ddd] font-bold underline hover:no-underline   text-[#0e385d] uppercase">
-                      PHÒNG SUPERIOR
+                    <td className="col-span-4 p-2 border border-solid border-[#ddd] font-bold underline hover:no-underline text-[#0e385d] uppercase">
+                      <Link to="/room/details">PHÒNG SUPERIOR</Link>
                     </td>
                     <td className=" col-span-3 p-2 border border-solid text-[#333] border-[#ddd]">
-                      18500000
+                      1850000
                     </td>
                     <td className=" col-span-3 p-2 border border-solid text-[#333] border-[#ddd]">
                       2
@@ -183,12 +247,14 @@ const Container: React.FC = () => {
             <div className="block lg:grid lg:grid-cols-2">
               <div className="col-span-1 px-[15px]">
                 <div className="block mb-[15px]">
-                  <label htmlFor="CheckIn" className="mb-[5px]">
+                  <label htmlFor="CheckIn" className="mb-[5px]  text-[#333]">
                     Giới tính
                     <span aria-required="true">*</span>
                   </label>
-                  <select className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-10">
-                    <option>Lựa chọn</option>
+                  <select className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-dtext-darkBlue ">
+                    <option value="" disabled selected>
+                      Lựa chọn
+                    </option>
                     <option value="Ông">Ông</option>
                     <option value="Cô">Cô</option>
                     <option value="bà">Bà</option>
@@ -206,12 +272,14 @@ const Container: React.FC = () => {
               </div>
               <div className="col-span-1 px-[15px]">
                 <div className="block mb-[15px]">
-                  <label htmlFor="CheckIn" className="mb-[5px]">
+                  <label htmlFor="CheckIn" className="mb-[5px] text-[#333]">
                     Quốc gia
                     <span aria-required="true">*</span>
                   </label>
-                  <select className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-10">
-                    <option>Lựa chọn quốc gia</option>
+                  <select className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-dtext-darkBlue ">
+                    <option value="" disabled selected>
+                      Lựa chọn quốc gia
+                    </option>
                     <option value="Việt Nam">Việt Nam</option>
                     <option value="USA">USA</option>
                     <option value="Canada">Canada</option>
@@ -222,14 +290,14 @@ const Container: React.FC = () => {
 
                 <InputComponent lable="Thời gian đến" span="" />
                 <div className="block mb-[15px]">
-                  <label htmlFor="CheckIn" className="mb-[5px]">
+                  <label htmlFor="CheckIn" className="mb-[5px] text-[#333]">
                     Yêu cầu khác
                     {/* <span aria-required="true">*</span> */}
                   </label>
                   <textarea
                     cols={40}
                     rows={8}
-                    className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-[230px]"
+                    className="py-[6px] px-3 w-full text-darkBlue border border-solid border-dtext-darkBlue h-[230px]"
                   />
                 </div>
               </div>

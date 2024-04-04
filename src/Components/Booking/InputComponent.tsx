@@ -11,7 +11,7 @@ const InputComponent: React.FC<{ lable: string; span: string }> = ({
           {lable}
           <span aria-required="true">{span}</span>
         </label>
-        <input className="py-[6px] px-3 w-full text-[#333] border border-solid border-[#333] h-10" />
+        <input className="py-[6px] px-3 w-full h-[50px] text-darkBlue border border-solid border-dtext-darkBlue" />
       </div>
     </div>
   );

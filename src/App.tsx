@@ -39,7 +39,7 @@ const appRoutes: RouteObject[] = [
         element: <DetailRoom />,
       },
       {
-        path: "/booking",
+        path: "/booking/:value?",
         element: <BookingPage />,
       },
     ],
