@@ -19,6 +19,7 @@ const DetailRoom: React.FC = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
   const [arrRooms, setArrRooms] = useState([]);
+  const [titles, setTitle] = useState();
   const [amenitiesArray, setAmenitiesArray] = useState([]);
   const [servicesArray, setServicesArray] = useState([]);
 
@@ -31,14 +32,15 @@ const DetailRoom: React.FC = () => {
         const servicesArray = JSON.parse(data.data.services);
         setAmenitiesArray(amenitiesArray);
         setServicesArray(servicesArray);
+        setTitle(data.data.name);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, [id]);
   useEffect(() => {
-    document.title = "Details";
-  }, []);
+    document.title = titles || "Default Title"; // If titles is falsy, set a default title
+  }, [titles]);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/products")
