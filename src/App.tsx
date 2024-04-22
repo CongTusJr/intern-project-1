@@ -12,6 +12,7 @@ import ABoutPage from "./Pages/ABoutPage";
 import RoomPage from "./Pages/RoomPage";
 import DetailRoom from "./Pages/DetailRoom";
 import BookingPage from "./Pages/BookingPage";
+import Contact from "./Pages/Contact";
 
 const appRoutes: RouteObject[] = [
   {
@@ -35,12 +36,16 @@ const appRoutes: RouteObject[] = [
         element: <RoomPage />,
       },
       {
-        path: "/room/details",
+        path: "/room/details/:id",
         element: <DetailRoom />,
       },
       {
         path: "/booking/:value?",
         element: <BookingPage />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },

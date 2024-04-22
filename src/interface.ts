@@ -5,20 +5,24 @@ export interface SliderItem {
     name: string;
 }
 export interface Feedback{
-    key:number,
+    id:number,
     name:string,
     cmt:string
 }
 export interface RoomDetails {
-    key: string;
+    id: number;
     image: string;
     name: string;
     bio: string;
-    url:string
+    url:string;
+    services?:any;
+    amenities?:any;
+    maxPeople?:number,
+    price?:number
 }
 export interface outServices {
-    key: string;
+    id: number;
     name: string;
-    url: string;
-    bio: string | JSX.Element;
+    image: string;
+    bio: any;
 } 

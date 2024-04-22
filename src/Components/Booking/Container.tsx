@@ -5,7 +5,7 @@ import { Checkbox } from "antd";
 import type { CheckboxProps } from "antd";
 import DatePicker from "react-datepicker";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import RoomList from "./RoomList";
 
 const qualitys = [
   {
@@ -48,24 +48,29 @@ const Container: React.FC = () => {
   const [checkInDate, setCheckInDate] = useState<any>(null);
   const [checkOutDate, setCheckOutDate] = useState<any>(null);
   const [showAlert, setShowAlert] = useState<boolean>(false);
+  const [rooms, setRoom] = useState([]);
   const params = useParams();
   const [adult, setAdult] = useState("");
   const [child, setChild] = useState("");
   const onChange: CheckboxProps["onChange"] = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
-  const handleCheckInChange = (
-    date: Date | null,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleCheckInChange = (date: Date | null) => {
     setCheckInDate(date);
     setShowAlert(false);
   };
-
-  const handleCheckOutChange = (
-    date: Date | null
-    // event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  useEffect(() => {
+    fetch("http://localhost:8000/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setRoom(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  const handleCheckOutChange = (date: Date | null) => {
     setCheckOutDate(date); // Set checkOutDate with date parameter
     if (dayjs(date).isBefore(checkInDate)) {
       // Compare dates directly with date parameter
@@ -123,7 +128,7 @@ const Container: React.FC = () => {
                     selected={checkInDate}
                     onChange={handleCheckInChange}
                     className="px-3 py-[6px] w-full h-[50px] text-darkBlue border border-solid border-darkBlue "
-                    dateFormat="dd/MM/YYYY"
+                    dateFormat="dd/MM/yyyy"
                   />
                 </div>
                 <div>
@@ -200,46 +205,7 @@ const Container: React.FC = () => {
               </div>
             </div>
             <div className="relative px-[15px]">
-              <table className=" w-full max-w-full border border-solid border-[#ddd] border-collapse my-5">
-                <thead>
-                  <tr className="grid grid-cols-12">
-                    <td className="col-span-4 p-2 border border-solid  text-[#333] border-[#ddd]">
-                      <strong>Loại Phòng</strong>
-                    </td>
-                    <td className=" col-span-3 p-2 border border-solid text-[#333]  border-[#ddd]">
-                      <strong>Giá/Đêm</strong>
-                    </td>
-                    <td className=" col-span-3 p-2 border border-solid text-[#333]  border-[#ddd]">
-                      <strong>Số người tối đa</strong>
-                    </td>
-                    <td className="col-span-2 p-2 border border-solid  text-[#333] border-[#ddd]">
-                      <strong> </strong>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="grid grid-cols-12">
-                    <td className="col-span-4 p-2 border border-solid border-[#ddd] font-bold underline hover:no-underline text-[#0e385d] uppercase">
-                      <Link to="/room/details">PHÒNG SUPERIOR</Link>
-                    </td>
-                    <td className=" col-span-3 p-2 border border-solid text-[#333] border-[#ddd]">
-                      1850000
-                    </td>
-                    <td className=" col-span-3 p-2 border border-solid text-[#333] border-[#ddd]">
-                      2
-                    </td>
-                    <td className="col-span-2 p-2 border border-solid  text-[#333] border-[#ddd]">
-                      <select className="p-1 border border-solid border-[#333]">
-                        {qualitys.map((quality) => (
-                          <option value={quality.value} key={quality.key}>
-                            {quality.label}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <RoomList roomList={rooms} />
             </div>
             <br />
             <br />

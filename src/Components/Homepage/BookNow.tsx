@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoCalendarSharp } from "react-icons/io5";
 import { FaAngleRight } from "react-icons/fa6";
 import { useNavigate } from "react-router";
@@ -61,9 +61,6 @@ const BookNow: React.FC = () => {
       const formattedCheckInDate = dayjs(checkInDate).format("MM%2FDD%2FYYYY");
       const formattedCheckOutDate =
         dayjs(checkOutDate).format("MM%2FDD%2FYYYY");
-
-      console.log("Check-in Date:", formattedCheckInDate);
-      console.log("Check-out Date:", formattedCheckOutDate);
 
       navigate(
         `/booking/Adult=${selectedValueIn}&Checkin=${formattedCheckInDate}&Checkout=${formattedCheckOutDate}&Child=${selectedValueOut}`

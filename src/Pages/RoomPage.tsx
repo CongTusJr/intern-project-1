@@ -1,11 +1,24 @@
-import React from "react";
-// import Carousel from 'react-bootstrap/Carousel';
-import RoomSwiper from "../Components/Homepage/RoomSwiper";
+import React, { useEffect, useState } from "react";
+import Bannerdetail from "../Components/Details/Bannerdetail";
+import Container from "../Components/Room/Container";
 
 const RoomPage: React.FC = () => {
+  const [arrRooms, setArrRooms] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8000/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        setArrRooms(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
-    // <RoomSwiper arrRooms={}/>
-    <div></div>
+    <div>
+      <Bannerdetail />
+      <Container arrRooms={arrRooms} />
+    </div>
   );
 };
 

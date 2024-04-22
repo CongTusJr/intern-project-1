@@ -39,7 +39,7 @@ const SliderFeedback: React.FC<{ arrFeedback: Feedback[] }> = ({
           <div className="py-[30px] px-[47px] max-w-[600px] sm:py-5 sm:pr-[15px] sm:pl-20">
             <Slider {...settingsFeedback}>
               {arrFeedback.map((Feedback) => (
-                <div key={Feedback.key}>
+                <div key={Feedback.id}>
                   <h4 className="text-3xl my-[10px] text-white">
                     {Feedback.name}
                   </h4>
