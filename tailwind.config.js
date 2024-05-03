@@ -48,6 +48,7 @@ module.exports = {
       textCl: "#333d21",
       textA: "#AE8545",
       red: "#ff0000",
+      darkBlue: "#0e385d",
     },
   },
   plugins: [require("@tailwindcss/typography")],

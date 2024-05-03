@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { RoomDetails } from "../../interface";
+import { Link } from "react-router-dom";
 
 const RoomSwipers: React.FC<{ arrRooms: RoomDetails[] }> = ({ arrRooms }) => {
   return (
@@ -38,18 +39,20 @@ const RoomSwipers: React.FC<{ arrRooms: RoomDetails[] }> = ({ arrRooms }) => {
             }}
           >
             {arrRooms.map((arrRoom) => (
-              <SwiperSlide key={arrRoom.key} className="mr-[10px]">
+              <SwiperSlide key={arrRoom.id} className="mr-[10px]">
                 <img
                   src={arrRoom.image}
                   alt={arrRoom.name}
                   className="w-[93%]"
                 />
                 <div className="p-5 bg-background w-[93%]">
-                  <a href={arrRoom.url}>
-                    <h4 className="text-center mt-[5px] mb-[10px] hover:text-[#C52D2F] text-textA pl-[5px] text-lg font-bold">
-                      {arrRoom.name}
-                    </h4>
-                  </a>
+                  <div className="cursor-pointer">
+                    <Link to={`/room/details/${arrRoom.id}`}>
+                      <h4 className="text-center mt-[5px] mb-[10px] hover:text-[#C52D2F] text-textA pl-[5px] text-lg font-bold">
+                        {arrRoom.name}
+                      </h4>
+                    </Link>
+                  </div>
                   <div className="text-justify">{arrRoom.bio}</div>
                 </div>
               </SwiperSlide>

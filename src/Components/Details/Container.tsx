@@ -15,13 +15,20 @@ import {
   Pagination,
   Thumbs,
 } from "swiper/modules";
+import { RoomDetails } from "../../interface";
 
 const Container: React.FC<{
   arrUrlRoom: string[];
-  detailAmenities: string[];
-  detailServices: string[];
-}> = ({ arrUrlRoom, detailAmenities, detailServices }) => {
+  amenitiesArray: string[] | undefined;
+  servicesArray: string[] | undefined;
+  roomDetails: RoomDetails | RoomDetails[];
+}> = ({ arrUrlRoom, roomDetails, amenitiesArray, servicesArray }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const roomDetailsArray = Array.isArray(roomDetails)
+    ? roomDetails
+    : [roomDetails];
+  const amenities = Array.isArray(amenitiesArray) ? amenitiesArray : [];
+  const services = Array.isArray(servicesArray) ? servicesArray : [];
 
   return (
     <div className="block w-full md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto mt-[60px] px-[15px]">
@@ -66,48 +73,44 @@ const Container: React.FC<{
             ))}
           </Swiper>
         </div>
-        <div className="col-span-5 px-[15px]">
-          <h3 className="text-2xl relative mt-5 mb-[34px] leading-[18px] after:bg-[#b5876d] after:bg-opacity-50 after:bg-none after:bg-repeat after:bg-scroll after:bottom-[-10px] after:h-[1px] after:left-0 after:w-[90px] after:absolute">
-            PHÒNG SUPERIOR
-          </h3>
-          <div className="text-justify text-[#333]">
-            Phòng Superior có diện tích 28m2 được thiết kế hài hòa với nội thất
-            sang trọng và đầy đủ tiện nghi hiện đại mang đến sự thoải mái, tiện
-            lợi nhất cho quý khách.
-            <br />
-            Phòng Superior gồm 1 giường đôi và có cửa sổ.
+        {roomDetailsArray?.map((roomDetail) => (
+          <div className="col-span-5 px-[15px]" key={roomDetail.id}>
+            <h3 className="text-2xl relative mt-5 mb-[34px] leading-[18px] after:bg-[#b5876d] after:bg-opacity-50 after:bg-none after:bg-repeat after:bg-scroll after:bottom-[-10px] after:h-[1px] after:left-0 after:w-[90px] after:absolute">
+              {roomDetail.name}
+            </h3>
+            <div className="text-justify text-[#333]">{roomDetail.bio}</div>
+            <table className="w-full ">
+              <tbody>
+                <tr>
+                  <td className="w-[50%]">
+                    <div className="text-[#333]">
+                      <div>
+                        <strong>Tiện nghi trong phòng:</strong>
+                      </div>
+                      <ul>
+                        {amenities.map((amenity, index) => (
+                          <li key={index}>• {amenity}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </td>
+                  <td className="w-[50%]">
+                    <div className="text-[#333]">
+                      <div>
+                        <strong>Dịch vụ cung cấp:</strong>
+                      </div>
+                      <ul>
+                        {services.map((service, index) => (
+                          <li key={index}>• {service}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <table className="w-full ">
-            <tbody>
-              <tr>
-                <td className="w-[50%]">
-                  <div className="text-[#333]">
-                    <div>
-                      <strong>Tiện nghi trong phòng:</strong>
-                    </div>
-                    <ul>
-                      {detailAmenities.map((amenitie, index) => (
-                        <li key={index}>• {amenitie}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </td>
-                <td className="w-[50%]">
-                  <div className="text-[#333]">
-                    <div>
-                      <strong>Dịch vụ cung cấp:</strong>
-                    </div>
-                    <ul>
-                      {detailServices.map((service, index) => (
-                        <li key={index}>• {service}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        ))}
       </div>
       <div className="relative w-full md:w-[750px] lg:w-[970px] xl:w-[1170px] mx-auto  before:table px-[15px] text-center after:clear-both">
         <a

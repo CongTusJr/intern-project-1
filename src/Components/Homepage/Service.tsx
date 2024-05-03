@@ -1,5 +1,6 @@
 import React from "react";
 import { outServices } from "../../interface";
+import parse from "html-react-parser";
 
 const Service: React.FC<{ arrServices: outServices[] }> = ({ arrServices }) => {
   return (
@@ -16,11 +17,11 @@ const Service: React.FC<{ arrServices: outServices[] }> = ({ arrServices }) => {
           <div className="sm:flex justify-center mt-5">
             {arrServices.map((outService) => (
               <div
-                key={outService.key}
+                key={outService.id}
                 className="w-full sm:w-[390px] px-[15px]"
               >
                 <img
-                  src={outService.url}
+                  src={outService.image}
                   alt={outService.name}
                   className="w-[100%]"
                 />
@@ -29,7 +30,8 @@ const Service: React.FC<{ arrServices: outServices[] }> = ({ arrServices }) => {
                     {outService.name}
                   </div>
                   <div className="text-[#333d21] text-base text-justify mt-[10px] mb-[25px]">
-                    {outService.bio}
+                    {parse(outService.bio)}
+                    {/* {JSON.parse(outService.bio)} */}
                   </div>
                   <a
                     href="https://reynaluxuryhotel.com/Gioi-thieu/61/khach-san-reyna-luxury"

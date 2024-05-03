@@ -61,17 +61,17 @@ const Header: React.FC = () => {
     {
       key: "hinhanh",
       label: "HÌNH ẢNH",
-      url: "/room",
+      url: "",
     },
     {
       key: "tours",
       label: "TOURS",
-      url: "/room",
+      url: "",
     },
     {
       key: "lienhe",
       label: "LIÊN HỆ",
-      url: "",
+      url: "/contact",
     },
   ];
   const images = [
